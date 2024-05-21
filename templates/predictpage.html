@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IPL Score Predictor</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='styles/predictpage.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <br />
+      <h2 style="color: white">Predicted Result</h2>
+      <div class="prediction-details">
+        <div class="team-container">
+          <img
+            id="batting-team-logo"
+            class="team-logo"
+            src=""
+            alt="Batting Team Logo"
+          />
+          <p id="batting-team-name" class="team-name">Batting Team</p>
+        </div>
+        <div class="team-container">
+          <img
+            id="bowling-team-logo"
+            class="team-logo"
+            src=""
+            alt="Bowling Team Logo"
+          />
+          <p id="bowling-team-name" class="team-name">Bowling Team</p>
+        </div>
+      </div>
+      <div class="predicted-score">
+        <br />
+        <br />
+        <h2 style="color: white">Predicted Score:<br />{{score}}</h2>
+        <p id="predicted-score"></p>
+      </div>
+      <div class="lgtbt">
+        <form id="logoutForm" action="{{ url_for('home') }}">
+          <div class="arun">
+            <input
+              type="submit"
+              value="Logout"
+              onclick="logoutClicked(event)"
+            />
+          </div>
+        </form>
+      </div>
+      <script>
+        function logoutClicked(event) {
+          event.preventDefault(); // Prevent form submission
+          var confirmed = confirm("Are you sure you want to logout?");
+          if (confirmed) {
+            alert("Successfully logged out!");
+            document.getElementById("logoutForm").submit(); // Submit the form after the prompt
+          }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+          const selectedTeams = JSON.parse(
+            localStorage.getItem("selectedTeams")
+          );
+          const battingTeamName = selectedTeams.battingTeam;
+          const bowlingTeamName = selectedTeams.bowlingTeam;
+
+          // Function to set the logo source based on team name
+          function setTeamLogo(teamName, elementId) {
+            const imgElement = document.getElementById(elementId);
+            let imagePath;
+            // Set image path based on team name
+            switch (teamName) {
+              case "Kolkata Knight Riders":
+                imagePath = "../static/Kolkata Knight Riders.png";
+                break;
+              case "Chennai Super Kings":
+                imagePath = "../static/Chennai Super Kings.png";
+                break;
+              case "Rajasthan Royals":
+                imagePath = "../static/Rajasthan Royals.png";
+                break;
+              case "Mumbai Indians":
+                imagePath = "../static/Mumbai Indians.png";
+                break;
+              case "Punjab Kings":
+                imagePath = "../static/Punjab Kings.png";
+                break;
+              case "Delhi Capitals":
+                imagePath = "../static/Delhi Capitals.png";
+                break;
+              case "Royal Challengers Bengaluru":
+                imagePath = "../static/Royal Challengers Bengaluru.png";
+                break;
+              case "Sunrisers Hyderabad":
+                imagePath = "../static/Sunrisers Hyderabad.png";
+                break;
+              case "Lucknow Super Giants":
+                imagePath = "../static/Lucknow Super Giants.png";
+                break;
+              case "Gujarat Titans":
+                imagePath = "../static/Gujarat Titans.png";
+                break;
+              // default:
+              //   imagePath = "../static/default_logo.png";
+            }
+            // Set image source and alt attribute
+            imgElement.src = imagePath;
+            imgElement.alt = teamName + " Logo";
+          }
+
+          // Set logos and team names for batting and bowling teams
+          setTeamLogo(battingTeamName, "batting-team-logo");
+          setTeamLogo(bowlingTeamName, "bowling-team-logo");
+
+          document.getElementById("batting-team-name").innerText =
+            battingTeamName;
+          document.getElementById("bowling-team-name").innerText =
+            bowlingTeamName;
+        });
+      </script>
+    </div>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+

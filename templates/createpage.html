@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IPL Score Predictor</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='styles/createpage.css') }}"
+    />
+  </head>
+  <body>
+    <h1>Register</h1>
+    <div class="container">
+      <form
+        id="createAccountForm"
+        action="{{ url_for('create') }}"
+        method="POST"
+      >
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" name="fname" required />
+
+        <label for="lname">Last Name</label>
+        <input type="text" id="lname" name="lname" required />
+
+        <label for="uname">Username</label>
+        <input type="text" id="uname" name="uname" required />
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required />
+
+        <input type="submit" value="Create Account" />
+      </form>
+      <p class="success-message" id="successMessage">
+        Account created successfully!
+      </p>
+
+      <script>
+        const form = document.getElementById("createAccountForm");
+        const successMessage = document.getElementById("successMessage");
+      </script>
+    </div>
+  </body>
+</html>

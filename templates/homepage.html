@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IPL Score Predictor</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='styles/homepage.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+        <ul>
+          <li><a href="#about" class="smooth-scroll-link">About</a></li>
+          <li><a href="#teams" class="smooth-scroll-link">Teams</a></li>
+          <li>
+            <a href="{{ url_for('create') }}" class="smooth-page-transition"
+              >Register</a
+            >
+          </li>
+          <li>
+            <a href="{{ url_for('login') }}" class="smooth-page-transition"
+              >Login</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <img src="../static/IPL_LOGO_CORPORATE_2024.png" alt="IPL Logo" />
+    <section id="about">
+      <h1>ABOUT</h1>
+      <p>
+        The Indian Premier League (IPL) is a professional Twenty20 cricket<br />
+        league in India featuring franchise-based teams representing
+        different<br />
+        cities. Known for its high-octane matches, star-studded lineups, and<br />
+        global audience, the IPL has become one of the most popular and
+        <br />
+        lucrative cricket tournaments worldwide since its inception in 2008.
+
+        <br />
+        With its blend of entertainment, intense competition, and top-tier
+        <br />
+        cricketing talent, the IPL captivates millions of fans every year
+        <br />
+        during its annual season.
+      </p>
+    </section>
+
+    <section id="teams">
+      <h1>IPL Teams</h1>
+      <div class="container1">
+        <div class="team">
+          <img
+            src="../static/Royal Challengers Bengaluru.png"
+            alt="Royal Challengers Bengaluru"
+          />
+          <h2>Royal Challengers Bengaluru</h2>
+        </div>
+        <div class="team">
+          <img
+            src="../static/Chennai Super Kings.png"
+            alt="Chennai Super Kings"
+          />
+          <h2>Chennai Super Kings</h2>
+        </div>
+        <div class="team">
+          <img src="../static/Rajasthan Royals.png" alt="Rajasthan Royals" />
+          <h2>Rajasthan Royals</h2>
+        </div>
+        <div class="team">
+          <img src="../static/Mumbai Indians.png" alt="Mumbai Indians" />
+          <h2>Mumbai Indians</h2>
+        </div>
+        <div class="team">
+          <img
+            src="../static/Kolkata Knight Riders.png"
+            alt="Kolkata Knight Riders"
+          />
+          <h2>Kolkata Knight Riders</h2>
+        </div>
+        <div class="team">
+          <img src="../static/Delhi Capitals.png" alt="Delhi Capitals" />
+          <h2>Delhi Capitals</h2>
+        </div>
+        <div class="team">
+          <img src="../static/Punjab Kings.png" alt="Punjab Kings" />
+          <h2>Punjab Kings</h2>
+        </div>
+        <div class="team">
+          <img
+            src="../static/Sunrisers Hyderabad.png"
+            alt="Sunrisers Hyderabad"
+          />
+          <h2>Sunrisers Hyderabad</h2>
+        </div>
+        <div class="team">
+          <img
+            src="../static/Lucknow Super Giants.png"
+            alt="Lucknow Super Giants"
+          />
+          <h2>Lucknow Super Giants</h2>
+        </div>
+        <div class="team">
+          <img src="../static/Gujarat Titans.png" alt="Gujarat Titans" />
+          <h2>Gujarat Titans</h2>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <h3>Contact</h3>
+      <p>Email : iplscore@gmail.com</p>
+      <p>Phone No : +91 9867577621</p>
+    </footer>
+
+    <script>
+      document.querySelectorAll(".smooth-scroll-link").forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute("href");
+          const targetElement = document.querySelector(targetId);
+
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
